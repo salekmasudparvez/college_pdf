@@ -27,7 +27,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    #content {
+    #pdf_admitcard_content {
       background: white;
       width: 794px; /* A4 width in pixels at 96dpi */
       margin: 0 auto;
@@ -38,7 +38,7 @@
       padding: 20px;
       margin: 0 auto;
     }
-    .header {
+    .admitcard_pdf_header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -141,10 +141,10 @@
     <button onclick="handleDownload()">⬇️ Download PDF</button>
   </div>
 
-  <div id="content">
+  <div id="pdf_admitcard_content">
     <!-- Admit Card 1 -->
     <div class="admit-card">
-      <div class="header">
+      <div class="admitcard_pdf_header">
         <div class="college-left">
           <img src="./assets/logo.png" alt="Logo" />
           <div class="college-text">
@@ -182,7 +182,7 @@
      <span class="divider_span">--------------------------------------------------------</span>
     <!-- Admit Card 2 (duplicate or another student) -->
     <div class="admit-card">
-      <div class="header">
+      <div class="admitcard_pdf_header">
         <div class="college-left">
           <img src="./assets/logo.png" alt="Logo" />
           <div class="college-text">
@@ -222,7 +222,7 @@
   <script>
     async function handleDownload() {
       const { jsPDF } = window.jspdf;
-      const element = document.getElementById('content');
+      const element = document.getElementById('pdf_admitcard_content');
       const canvas = await html2canvas(element, { scale: 2 });
 
       const imgData = canvas.toDataURL('image/png');

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ভর্তি আবেদন ফর্ম</title>
+  <style>
+    * {
+      font-family: 'Siyam Rupali', sans-serif;
+      margin: o;
+      padding: 0;
+      box-sizing: border-box;
+
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid black;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header-logo-part {
+      display: flex;
+      align-items: start;
+      align-items: center;
+      gap: 0;
+    }
+
+    .header-text {
+      text-align: left;
+    }
+
+    .header-text h1 {
+      font-size: 30px;
+      margin: 0;
+    }
+
+    .header-text h3 {
+      font-size: 25px;
+      font-weight: normal;
+      margin: 0 !important;
+    }
+
+    .header-text p {
+      font-size: 20px;
+      font-weight: normal;
+      color: #535353;
+      margin: 0 !important;
+    }
+
+    .logo {
+      width: 144px;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+
+    }
+
+    .photo img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+
+
+    }
+
+
+
+    .label {
+      display: inline-block;
+      width: 250px;
+      vertical-align: top;
+    }
+
+    .line {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      width: 500px;
+      height: 20px;
+    }
+
+    .multi-line {
+      width: 100%;
+      height: 20px;
+      border-bottom: 1px solid black;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 5px;
+    }
+
+    ul {
+      margin: 5px 0 5px 20px;
+    }
+
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+
+    /* section one */
+    .form-section-one {
+      margin-top: 20px;
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .form-section-one>.input-group:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    .form-section-one>.input-group:nth-child(2) {
+      grid-column: span 5;
+      text-align: left;
+      padding: 5px 10px;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+
+    }
+
+    .form-section-one>.input-group:nth-child(4) {
+      grid-column: span 5;
+      text-align: left;
+      padding: 5px 10px;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+
+
+    }
+
+    .form-section-one>.input-group:nth-child(3) {
+      grid-column: span 3;
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-section-one>.input-group:nth-child(3) .optional {
+      color: gray;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    .class-roll {
+      margin: 8px 0;
+    }
+
+    /* form section two */
+    .form-section-two {
+      margin-top: 20px;
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .form-section-two .input-group {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .form-section-two .input-group .section-two-title {
+      grid-column: span 2;
+      text-align: left;
+      padding: 5px 10px;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .form-section-two>.input-group:last-child .section-two-title,
+    .form-section-two>.input-group:last-child .section-two-write {
+      border-bottom: none;
+    }
+
+    .form-section-two .input-group .section-two-write {
+      grid-column: span 3;
+      padding: 5px 10px;
+      border-bottom: 1px solid black;
+    }
+
+    .section-two-write-last {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: start;
+      align-items: center;
+      grid-column: span 3;
+      border-bottom: none;
+    }
+
+    .section-two-write-last div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: start;
+      align-items: center;
+
+    }
+
+    .section-two-write-last>div:nth-child(1) {
+      border-right: 1px solid black;
+      padding: 5px 10px;
+
+    }
+
+    .section-two-write-last>div:nth-child(2) {
+      padding: 5px 10px;
+    }
+
+    /*form section three */
+    .form-section-three {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 1px solid black;
+      margin-top: 20px;
+    }
+
+    .form-section-three>.input-group:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(2) {
+      grid-column: span 2;
+    }
+
+
+    .form-section-three>.input-group:nth-child(3) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(6) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(6) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(7) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(8) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(9) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(10) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(11) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(12) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(13) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(14) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(15) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(16) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(17) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(18) {
+      grid-column: span 2;
+    }
+
+    .form-section-three>.input-group:nth-child(19) {
+      grid-column: span 2;
+
+
+    }
+
+    .form-section-three>.input-group:nth-child(20) {
+      grid-column: span 2;
+
+
+    }
+
+    .form-section-three>.input-group:nth-child(21) {
+      grid-column: span 2;
+    }
+
+
+    .form-section-three .input-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-section-three .input-group span {
+      padding: 5px 10px;
+    }
+
+    .text_nowrap {
+      white-space: nowrap;
+    }
+
+    .border_right_bottom {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .border_left_bottom {
+      border-left: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .border_bottom {
+      border-bottom: 1px solid black;
+    }
+
+    .border_left {
+      border-left: 1px solid black;
+
+    }
+
+    .border_right {
+      border-right: 1px solid black;
+
+    }
+
+    .grid_4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) !important;
+      align-items: center;
+      justify-content: start;
+    }
+
+    .check_box {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      border: 2px solid #333;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #fff 70%, #f0f0f0 100%);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      margin-left: 6px;
+      transition: border-color 0.2s;
+      margin: 0;
+      padding: 0;
+    }
+
+    .grid_column_span_3 {
+      grid-column: span 3 !important;
+    }
+
+    .grid_column_span_1 {
+      grid-column: span 1 !important;
+    }
+
+    .grid_column_span_4 {
+      grid-column: span 4;
+    }
+
+    .grid_column_span_2 {
+      grid-column: span 2;
+    }
+    .subject_table{
+      list-style: none;
+      padding-left: 0;
+    }
+    .subject_table li::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      border: 2px solid #333;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #fff 70%, #f0f0f0 100%);
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    .subject-table li{
+      margin: 5px 0;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-logo-part">
+        <img src="./assets/logo.png" class="logo" alt="Logo">
+        <div class="header-text">
+          <h1>পিপলস কলেজ, মহুরাপুর</h1>
+          <h3>স্থাপিত ১৯৭০ খ্রি:</h3>
+          <h3>ভর্তি আবেদন ফর্ম</h3>
+          <p>(আবেদনকারীর হাত দিয়ে ফর্ম পূরণ করতে হবে)</p>
+        </div>
+      </div>
+      <div class="photo"><img src="./assets/man.png" alt=""></div>
+    </div>
+
+    <div class="form-section-one">
+      <div class="input-group">
+        <span class="label">মোবাইল নং </span>
+
+      </div>
+
+      <div class="input-group">
+        <span class="label">শিক্ষার্থীর:</span>
+        <span></span>
+      </div>
+
+      <div class="input-group">
+        <span class="optional">(অফিস কর্তৃক পূরণীয়)</span>
+        <span class="class-roll">শ্রেণী রোল:.........................</span>
+
+      </div>
+
+      <div class="input-group">
+        <span class="label">অভিভাবকের:</span>
+        <span></span>
+      </div>
+    </div>
+
+    <p>বরাবর,<br>
+      অধ্যক্ষ<br>
+      পিপলস কলেজ<br>
+      মহুরাপুর, দৌলতপুর, কুষ্টিয়া।
+    </p>
+
+    <p>জনাব,<br>
+      আমি আপনার কলেজে ২০২...- ২০২... শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে ইচ্ছুক।
+      নিচে আমার বিবরণ প্রদান করিলাম:
+    </p>
+
+    <div class="form-section-two">
+      <div class="input-group">
+        <span class="section-two-title">১. আবেদনকারীর নাম (বাংলায়):</span>
+        <span class="section-two-write"></span>
+      </div>
+
+      <div class="input-group">
+        <span class="section-two-title">২. পিতার নাম (বাংলায়):</span>
+        <span class="section-two-write"></span>
+      </div>
+
+      <div class="input-group">
+        <span class="section-two-title">৩. মাতার নাম (বাংলায়):</span>
+        <span class="section-two-write"></span>
+      </div>
+
+      <div class="input-group">
+        <span class="section-two-title">৪. পিতার কর্মস্থল / অভিভাবকের নাম:</span>
+        <span class="section-two-write"></span>
+      </div>
+      <div class="input-group">
+        <span class="section-two-title"></span>
+        <span class=" section-two-write-last">
+          <div>
+            <span>মোবাইল নং:</span>
+            <span></span>
+          </div>
+          <div>
+            <span>সম্পর্ক:</span>
+            <span></span>
+          </div>
+        </span>
+      </div>
+    </div>
+
+
+
+    <div class="form-section-three">
+
+
+      <div class="input-group border_right_bottom">
+        <span class="text_nowrap">৫. অভিভাবকের পেশা:</span>
+      </div>
+      <div class="input-group border_bottom">
+        <span class="grid_column_span_2"></span>
+      </div>
+      <div class="input-group border_left_bottom">
+        <span>বার্ষিক আয়:</span>
+        <span></span>
+      </div>
+
+      <div class="input-group border_right_bottom">
+        <span class="text_nowrap">৬. অভিভাবকের জমির পরিমান :</span>
+      </div>
+      <div class="grid_4 input-group border_bottom">
+        <span>কৃষি:</span>
+        <span></span>
+        <span>অকৃষি:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_left_bottom">
+        <span>মোট:</span>
+      </div>
+
+      <div class="input-group border_right_bottom">
+        <span class="text_nowrap">৭. আবেদনকারীর বর্তমান ঠিকানা:</span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span>গ্রাম:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_bottom">
+        <span>ডাকঘর:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span></span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span>উপজেলা:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_bottom">
+        <span>জেলা:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span class="text_nowrap">৭. আবেদনকারীর স্থায়ী ঠিকানা:</span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span>গ্রাম:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_bottom">
+        <span>ডাকঘর:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span></span>
+      </div>
+      <div class="input-group border_right_bottom">
+        <span>উপজেলা:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_bottom">
+        <span>জেলা:</span>
+        <span></span>
+      </div>
+      <div class="input-group border_right">
+        <span class="text_nowrap">৯. জন্ম তারিখ(সনদ অনুযায়া):</span>
+      </div>
+      <div class="input-group border_right grid_column_span_1">
+        <span></span>
+      </div>
+      <div class="input-group grid_column_span_3">
+        <span class="text_nowrap">বৈবাহিক অবস্থা :বিবাহিত <div class="check_box"></div> অবিবাহিত <div class="check_box">
+          </div> </span>
+      </div>
+
+    </div>
+
+
+    <div class="input-group">
+      <span>১০. পরীক্ষার পাসের বিবরণ:</span>
+    </div>
+
+    <table>
+      <tr>
+        <th>পরীক্ষার নাম</th>
+        <th>রোল নম্বর</th>
+        <th>রেজি নম্বর</th>
+        <th>বিদ্যালয়ের নাম</th>
+        <th>শিক্ষাবর্ষ</th>
+        <th>প্রাপ্ত গ্রেড</th>
+        <th>পাশের সাল</th>
+        <th>বোর্ডের নাম</th>
+      </tr>
+      <tr>
+        <td>এসএসসি</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>জেএসসি</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+ 
+
+    <p style="margin-top: 30px;">
+     ১১. যে সকল বিষয় গ্রহন করতে ইচ্ছুক (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ প্রযুক্তি,(ঘ)..............(ঙ)..............(চ)..............(ছ) ৪র্থ বিষয় ..............আমি এ মর্মে অঙ্গীকার করছি যে, ওপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ শাস্তি ভোগ করতে বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকবো।
+    </p>
+
+    <div class="signatures">
+      <div>
+        <p>অভিভাবকের স্বাক্ষর ও সীল</p>
+        <p>তারিখ: ......................</p>
+      </div>
+      <div>
+        <p>আবেদনকারীর স্বাক্ষর</p>
+        <p>তারিখ: ......................</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
