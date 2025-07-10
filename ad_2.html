@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পিপলস কলেজ - ভর্তি আবেদন ফর্ম</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+    --primary-color: #004D25; /* A darker, more professional green */
+    --border-color: #cccccc;
+    --text-color: #333333;
+    --bg-color: #eef2f7;
+    --section-bg: #f8f9fa;
+}
+
+body {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+#form-container {
+    background-color: white;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 15mm;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+.logo { width: 90px; height: 90px; }
+.title-container { text-align: center; }
+.title-container h1 { color: var(--primary-color); font-size: 28px; margin: 0; font-weight: 700; }
+.title-container h2 { font-size: 18px; margin: 4px 0; font-weight: 500; }
+.title-container h3 { background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 5px; display: inline-block; font-size: 20px; margin: 10px 0 5px; }
+.title-container p { margin: 5px 0 0; font-size: 12px; }
+
+.photo-container {
+    width: 120px;
+    height: 140px;
+    border: 2px dashed var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}
+
+.top-info { padding: 10px 0; font-size: 14px; }
+.top-info .form-group { flex-direction: row; align-items: baseline; gap: 10px;}
+
+/* Form Body */
+.form-body { flex-grow: 1; }
+.address-section { line-height: 1.6; margin: 10px 0 20px; }
+.declaration, .final-declaration { line-height: 1.8; text-align: justify; }
+
+.form-section { margin-bottom: 20px; }
+.form-section h4 {
+    background-color: var(--section-bg);
+    padding: 8px 12px;
+    border-left: 4px solid var(--primary-color);
+    font-size: 16px;
+    margin: 0 0 15px 0;
+    font-weight: 600;
+}
+
+.grid-container { display: grid; gap: 10px 20px; }
+.col-2 { grid-template-columns: 1fr 1fr; }
+.col-3 { grid-template-columns: repeat(3, 1fr); }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+
+.form-group {
+    border-bottom: 1px dotted var(--border-color);
+    padding-bottom: 6px;
+    display: flex;
+    align-items: baseline; /* Aligns label and space */
+    gap: 5px;
+}
+
+.form-group label { font-weight: 500; font-size: 14px; white-space: nowrap; }
+.marital-status { border-bottom: none; }
+.marital-status input { margin-right: 5px; }
+.marital-status label { font-weight: normal; }
+.land-info { margin-top: 15px; }
+.land-info .group-label { border-bottom: none; grid-column: 1 / -1; font-weight: 500; font-size: 14px; padding-bottom: 5px;}
+
+fieldset { border: 1px solid var(--border-color); padding: 15px; border-radius: 4px; }
+legend { font-weight: 600; padding: 0 10px; color: var(--primary-color); }
+.address-fields { display: flex; flex-direction: column; gap: 10px; }
+.address-fields .form-group { padding-bottom: 10px; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+th, td { border: 1px solid var(--border-color); padding: 8px; text-align: center; }
+thead { background-color: var(--section-bg); }
+th { font-weight: 600; }
+td { height: 20px; }
+
+/* Footer */
+footer { display: flex; justify-content: space-between; padding-top: 40px; border-top: 1px solid var(--border-color); margin-top: auto; }
+.signature-box { width: 40%; text-align: center; font-size: 14px; }
+.signature-box p { margin: 5px 0; }
+.signature-box p:first-child { color: transparent; } /* Hidden text for line */
+
+/* Page Controls */
+.page-controls { text-align: center; margin-bottom: 20px; }
+.page-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+}
+.page-controls button:hover { background-color: #003319; }
+
+/* Print Styles */
+@media print {
+    body { background-color: white; padding: 0; margin: 0; }
+    .page-controls { display: none; }
+    #form-container { margin: 0; box-shadow: none; padding: 10mm; }
+}
+    </style>
+</head>
+<body>
+
+    <div class="page-controls">
+        <button id="download-btn">📄 Download as PDF</button>
+        <button onclick="window.print()">🖨️ Print Form</button>
+    </div>
+
+    <!-- A4 Page Container -->
+    <div id="form-container">
+        <header>
+            <div class="logo-container">
+                <!-- Using the logo from the original image -->
+                <img src="https://i.imgur.com/FwJ0wJb.png" alt="College Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1>পিপলস কলেজ, মহিপুর</h1>
+                <h2>স্থাপিতঃ ১৯৭০ খ্রিঃ</h2>
+                <h3>ভর্তি আবেদন ফর্ম</h3>
+                <p>(আবেদনকারীর স্বহস্তে ফর্ম পূরণ করতে হবে)</p>
+            </div>
+            <div class="photo-container">
+                <span>শিক্ষার্থীর <br> ছবি</span>
+            </div>
+        </header>
+
+        <section class="top-info">
+             <div class="form-group">
+                <label>শ্রেণী রোল:</label>
+                <span>.................................... (অফিস কর্তৃক পূরণীয়)</span>
+            </div>
+        </section>
+
+        <section class="form-body">
+            <div class="address-section">
+                বরাবর,<br>
+                অধ্যক্ষ,<br>
+                পিপলস কলেজ<br>
+                মহিপুর, দৌলতপুর, কুষ্টিয়া।
+            </div>
+
+            <p class="declaration">
+                জনাব,<br>
+                আমি আপনার কলেজে ২০২২ - ২০২৩ শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে ইচ্ছুক। নিম্নে আমার বিবরণ প্রদান করিলামঃ
+            </p>
+
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h4>১. আবেদনকারীর ব্যক্তিগত তথ্য</h4>
+                <div class="grid-container col-3">
+                    <div class="form-group span-2"><label>নাম (বাংলায়):</label></div>
+                    <div class="form-group"><label>মোবাইল নং:</label></div>
+                    <div class="form-group"><label>জন্ম তারিখ (সনদ অনুযায়ী):</label></div>
+                    <div class="form-group marital-status">
+                        <label>বৈবাহিক অবস্থা:</label>
+                        <input type="checkbox" id="married"><label for="married">বিবাহিত</label>
+                        <input type="checkbox" id="unmarried"><label for="unmarried">অবিবাহিত</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guardian Information Section -->
+            <div class="form-section">
+                <h4>২. অভিভাবকের তথ্য</h4>
+                <div class="grid-container col-3">
+                    <div class="form-group"><label>পিতার নাম (বাংলায়):</label></div>
+                    <div class="form-group"><label>মাতার নাম (বাংলায়):</label></div>
+                    <div class="form-group"><label>অভিভাবকের নাম:</label></div>
+                    <div class="form-group"><label>অভিভাবকের পেশা:</label></div>
+                    <div class="form-group"><label>মোবাইল নং (অভিভাবক):</label></div>
+                    <div class="form-group"><label>সম্পর্ক:</label></div>
+                    <div class="form-group"><label>বার্ষিক আয়:</label></div>
+                </div>
+                <div class="grid-container col-3 land-info">
+                    <label class="span-3 group-label">অভিভাবকের জমির পরিমান:</label>
+                    <div class="form-group"><label>কৃষি:</label></div>
+                    <div class="form-group"><label>অকৃষি:</label></div>
+                    <div class="form-group"><label>মোট:</label></div>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="form-section">
+                <h4>৩. ঠিকানা</h4>
+                <div class="grid-container col-2">
+                    <fieldset>
+                        <legend>বর্তমান ঠিকানা</legend>
+                        <div class="address-fields">
+                            <div class="form-group"><label>গ্রাম:</label></div>
+                            <div class="form-group"><label>ডাকঘর:</label></div>
+                            <div class="form-group"><label>উপজেলা:</label></div>
+                            <div class="form-group"><label>জেলা:</label></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>স্থায়ী ঠিকানা</legend>
+                        <div class="address-fields">
+                            <div class="form-group"><label>গ্রাম:</label></div>
+                            <div class="form-group"><label>ডাকঘর:</label></div>
+                            <div class="form-group"><label>উপজেলা:</label></div>
+                            <div class="form-group"><label>জেলা:</label></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            
+            <!-- Academic Information Section -->
+            <div class="form-section">
+                <h4>৪. পরীক্ষার পাসের বিবরণ</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>পরীক্ষার নাম</th>
+                            <th>রোল নম্বর</th>
+                            <th>রেজিঃ নম্বর</th>
+                            <th>বোর্ডের নাম</th>
+                            <th>প্রাপ্ত গ্রেড</th>
+                            <th>পাসের সাল</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>এসএসসি</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>জেএসসি</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Subject Choice Section -->
+            <div class="form-section">
+                <h4>৫. যে সকল বিষয় গ্রহণ করতে ইচ্ছুক</h4>
+                 <p class="subject-choice">
+                    (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ প্রযুক্তি, (ঘ)................., (ঙ)................., (চ)................. ৪র্থ বিষয় .................।
+                </p>
+            </div>
+            
+            <p class="final-declaration">
+                আমি এ মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ শাস্তি ভোগ করতে বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকবো।
+            </p>
+
+        </section>
+
+        <footer>
+            <div class="signature-box">
+                <p>.................................................</p>
+                <p>অভিভাবকের স্বাক্ষর ও সীল</p>
+                <p>তারিখ: .............................</p>
+            </div>
+            <div class="signature-box">
+                <p>.................................................</p>
+                <p>আবেদনকারীর স্বাক্ষর</p>
+                <p>তারিখ: .............................</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Libraries for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Custom Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const downloadBtn = document.getElementById('download-btn');
+    
+    downloadBtn.addEventListener('click', () => {
+        const form = document.getElementById('form-container');
+        console.log("Starting PDF generation...");
+
+        // Use html2canvas to capture the form element
+        html2canvas(form, {
+            scale: 3, // Higher scale for better quality
+            useCORS: true,
+            logging: true,
+            width: form.offsetWidth,
+            height: form.offsetHeight,
+            windowWidth: document.documentElement.offsetWidth,
+            windowHeight: document.documentElement.offsetHeight
+        }).then(canvas => {
+            console.log("Canvas created.");
+            
+            const imgData = canvas.toDataURL('image/png');
+            
+            // Initialize jsPDF
+            const { jsPDF } = window.jspdf;
+            
+            // A4 page in 'mm' units (210mm wide x 297mm high)
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            
+            // Add the captured image to the PDF
+            // The image is scaled to fit the full A4 page
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            
+            // Save the PDF
+            pdf.save('Peoples-College-Admission-Form.pdf');
+            console.log("PDF download initiated.");
+
+        }).catch(error => {
+            console.error('Error generating PDF:', error);
+        });
+    });
+});
+    </script>
+
+</body>
+</html>

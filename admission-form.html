@@ -14,10 +14,8 @@
         }
 
         .admission-pdf-form-container {
-            max-width: 794px;
+            width: 800px;
             margin: auto;
-            padding: 20px;
-            border: 1px solid black;
             background: white;
         }
 
@@ -43,22 +41,25 @@
             font-size: 30px;
             margin: 0;
         }
-
+         .input-group{
+            font-size: 15px !important;
+         }
         .header-text h3 {
-            font-size: 25px;
+            font-size: 18px;
             font-weight: normal;
             margin: 0 !important;
         }
 
         .header-text p {
-            font-size: 20px;
-            font-weight: normal;
-            color: #535353;
+            font-size: 16px;
+            font-weight: lighter;
+            color: #939393;
             margin: 0 !important;
         }
 
         .logo {
             width: 144px;
+            padding: 0px 9px;
         }
 
         .photo {
@@ -84,13 +85,13 @@
             border-bottom: 1px solid black;
         }
 
-        table {
+        .education-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+       
         }
 
-        table,
+        .education-table,
         th,
         td {
             border: 1px solid black;
@@ -99,18 +100,18 @@
         }
 
         ul {
-            margin: 5px 0 5px 20px;
+            margin: 5px 0 5px;
         }
 
         .signatures {
             display: flex;
             justify-content: space-between;
-            margin-top: 50px;
+            margin-top: 10px;
         }
 
         /* section one */
         .form-section-one {
-            margin-top: 20px;
+            margin-top: 10px;
             border: 1px solid black;
             display: grid;
             grid-template-columns: repeat(9, 1fr);
@@ -126,7 +127,7 @@
         .form-section-one>.input-group:nth-child(2) {
             grid-column: span 5;
             text-align: left;
-            padding: 5px 10px;
+            padding: 5px;
             border-left: 1px solid black;
             border-right: 1px solid black;
             border-bottom: 1px solid black;
@@ -136,7 +137,7 @@
         .form-section-one>.input-group:nth-child(4) {
             grid-column: span 5;
             text-align: left;
-            padding: 5px 10px;
+            padding: 5px;
             border-left: 1px solid black;
             border-right: 1px solid black;
 
@@ -165,7 +166,7 @@
 
         /* form section two */
         .form-section-two {
-            margin-top: 20px;
+            margin-top: 10px;
             border: 1px solid black;
             display: grid;
             grid-template-columns: repeat(1, 1fr);
@@ -182,7 +183,7 @@
         .form-section-two .input-group .section-two-title {
             grid-column: span 2;
             text-align: left;
-            padding: 5px 10px;
+            padding: 5px;
             border-right: 1px solid black;
             border-bottom: 1px solid black;
         }
@@ -194,17 +195,18 @@
 
         .form-section-two .input-group .section-two-write {
             grid-column: span 3;
-            padding: 5px 10px;
+            padding: 5px;
             border-bottom: 1px solid black;
         }
 
         .section-two-write-last {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             justify-content: start;
             align-items: center;
             grid-column: span 3;
             border-bottom: none;
+            text-align: left;
         }
 
         .section-two-write-last div {
@@ -216,13 +218,13 @@
         }
 
         .section-two-write-last>div:nth-child(1) {
-            border-right: 1px solid black;
-            padding: 5px 10px;
+          
+            padding: 5px;
 
         }
 
         .section-two-write-last>div:nth-child(2) {
-            padding: 5px 10px;
+            padding: 5px;
         }
 
         /*form section three */
@@ -230,7 +232,7 @@
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             border: 1px solid black;
-            margin-top: 20px;
+            margin-top: 5px;
         }
 
         .form-section-three>.input-group:nth-child(1) {
@@ -333,7 +335,7 @@
         }
 
         .form-section-three .input-group span {
-            padding: 5px 10px;
+            padding: 5px;
         }
 
         .text_nowrap {
@@ -423,6 +425,34 @@
             margin: 5px 0;
             padding-left: 10px;
         }
+        .start-paragraph{
+            margin: 10px 0;
+            font-size: 16px;
+        
+        }
+        @media print {
+            @page {
+                size: A4 portrait;
+                
+            }
+
+            body {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .admission-pdf-form-container {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            .pdf-btn-container {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -430,7 +460,7 @@
     <div class="admission-pdf-form-container">
         <div class="header">
             <div class="header-logo-part">
-                <img src="./assets/logo.png" class="logo" alt="Logo">
+                <img src="./assets/logo.jpg" class="logo" alt="Logo">
                 <div class="header-text">
                     <h1>পিপলস কলেজ, মহুরাপুর</h1>
                     <h3>স্থাপিত ১৯৭০ খ্রি:</h3>
@@ -464,13 +494,8 @@
             </div>
         </div>
 
-        <p>বরাবর,<br>
-            অধ্যক্ষ<br>
-            পিপলস কলেজ<br>
-            মহুরাপুর, দৌলতপুর, কুষ্টিয়া।
-        </p>
 
-        <p>জনাব,<br>
+        <p class="start-paragraph">জনাব,<br>
             আমি আপনার কলেজে ২০২...- ২০২... শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে
             ইচ্ছুক।
             নিচে আমার বিবরণ প্রদান করিলাম:
@@ -493,18 +518,20 @@
             </div>
 
             <div class="input-group">
-                <span class="section-two-title">৪. পিতার কর্মস্থল / অভিভাবকের নাম:</span>
+                <span class="section-two-title">৪. পিতার / অভিভাবকের নাম:</span>
                 <span class="section-two-write"></span>
             </div>
             <div class="input-group">
-                <span class="section-two-title"></span>
-                <span class=" section-two-write-last">
+                <span class="section-two-title">
                     <div>
-                        <span>মোবাইল নং:</span>
+                        <span>অভিভাবকের সম্পর্ক:</span>
                         <span></span>
                     </div>
+                </span>
+                <span class=" section-two-write-last">
+                    
                     <div>
-                        <span>সম্পর্ক:</span>
+                        <span>অভিভাবকের মোবাইল নং:</span>
                         <span></span>
                     </div>
                 </span>
@@ -599,16 +626,16 @@
         </div>
 
 
-        <div class="input-group">
+        <div style="margin: 10px;">
             <span>১০. পরীক্ষার পাসের বিবরণ:</span>
         </div>
 
-        <table>
+        <table class="education-table">
             <tr>
                 <th>পরীক্ষার নাম</th>
                 <th>রোল নম্বর</th>
                 <th>রেজি নম্বর</th>
-                <th>বিদ্যালয়ের নাম</th>
+                
                 <th>শিক্ষাবর্ষ</th>
                 <th>প্রাপ্ত গ্রেড</th>
                 <th>পাশের সাল</th>
@@ -618,7 +645,7 @@
                 <td>এসএসসি</td>
                 <td></td>
                 <td></td>
-                <td></td>
+               
                 <td></td>
                 <td></td>
                 <td></td>
@@ -632,13 +659,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
             </tr>
         </table>
 
 
 
-        <p style="margin-top: 30px;">
+        <p style="margin-top: 10px;">
             ১১. যে সকল বিষয় গ্রহন করতে ইচ্ছুক (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ
             প্রযুক্তি,(ঘ)..............(ঙ)..............(চ)..............(ছ) ৪র্থ বিষয় ..............আমি এ মর্মে
             অঙ্গীকার করছি যে, ওপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ শাস্তি ভোগ করতে
@@ -657,7 +683,7 @@
         </div>
     </div>
     <!-- Buttons -->
-    <div style="text-align: center; margin-top: 30px;">
+    <div style="text-align: center; margin-top: 30px;" class="pdf-btn-container">
         <button onclick="printForm()">🖨️ প্রিন্ট করুন</button>
         <button onclick="downloadPDF()">⬇️ পিডিএফ ডাউনলোড</button>
     </div>

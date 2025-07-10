@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>পিপলস কলেজ - ভর্তি আবেদন ফর্ম</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #006400;
+            /* Dark Green */
+            --border-color: #cccccc;
+            --text-color: #333333;
+            --bg-color: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            -webkit-print-color-adjust: exact;
+            /* Important for printing background colors */
+            print-color-adjust: exact;
+        }
+
+        #form-container {
+            background-color: white;
+            width: 210mm;
+            /* A4 width */
+            min-height: 297mm;
+            /* A4 height */
+            margin: 20px auto;
+            padding: 15mm;
+            /* Standard margin */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            /* Include padding in width/height */
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+        }
+
+        .title-container {
+            text-align: center;
+        }
+
+        .title-container h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .title-container h2,
+        .title-container h3,
+        .title-container p {
+            margin: 5px 0 0;
+        }
+
+        .photo-container {
+            width: 120px;
+            height: 140px;
+            border: 2px dashed var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Form Body */
+        .form-body p {
+            line-height: 1.8;
+        }
+
+        .address-section {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section h4 {
+            background-color: #f2f2f2;
+            padding: 8px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 16px;
+            margin: 0 0 15px 0;
+        }
+
+        .form-grid,
+        .form-grid-address,
+        .form-grid-personal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-grid-address,
+        .form-grid-personal {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        fieldset {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        legend {
+            font-weight: 500;
+            padding: 0 10px;
+            color: var(--primary-color);
+        }
+
+        .address-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"] {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Noto Sans Bengali', sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 100, 0, 0.2);
+        }
+
+        .marital-status {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .marital-status label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .marital-status input[type="radio"] {
+            margin-right: -5px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #e9e9e9;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        td {
+            height: 25px;
+            /* Provides space for handwriting */
+        }
+
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+        }
+
+        .signature-box {
+            width: 40%;
+            text-align: center;
+        }
+
+        .signature-box hr {
+            border: 0;
+            border-top: 1px solid var(--text-color);
+        }
+
+        /* Page Controls (Buttons) */
+        .page-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .page-controls button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-family: 'Noto Sans Bengali', sans-serif;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .page-controls button:hover {
+            background-color: #004d00;
+        }
+
+
+        /* Print-specific Styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .page-controls {
+                display: none;
+            }
+
+            #form-container {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                box-shadow: none;
+                padding: 10mm;
+                /* Adjust for printer margins */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-controls">
+        <button id="print-btn">🖨️ Print Form</button>
+        <button id="download-btn">📄 Download as PDF</button>
+    </div>
+
+    <!-- This is the container that will be printed/converted to PDF -->
+    <div id="form-container">
+        <header>
+            <div class="logo-container">
+                <img src="https://i.imgur.com/L4u3v3n.png" alt="College Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1>পিপলস কলেজ, মহিপুর</h1>
+                <h2>স্থাপিতঃ ১৯৭০ খ্রিঃ</h2>
+                <h3>ভর্তি আবেদন ফর্ম</h3>
+                <p>(আবেদনকারীর স্বহস্তে ফর্ম পূরণ করতে হবে)</p>
+            </div>
+            <div class="photo-container">
+                <span>শিক্ষার্থীর <br> ছবি</span>
+            </div>
+        </header>
+
+        <section class="form-body">
+            <div class="address-section">
+                বরাবর,<br>
+                অধ্যক্ষ,<br>
+                পিপলস কলেজ<br>
+                মহিপুর, দৌলতপুর, কুষ্টিয়া।
+            </div>
+
+            <p class="declaration">
+                জনাব,<br>
+                আমি আপনার কলেজে ২০২২ - ২০২৩ শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে
+                ইচ্ছুক। নিম্নে আমার বিবরণ প্রদান করিলামঃ
+            </p>
+
+            <div class="form-section">
+                <h4>১. আবেদনকারীর তথ্য</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>শিক্ষার্থীর নাম (বাংলায়)</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>পিতার নাম (বাংলায়)</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>মাতার নাম (বাংলায়)</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নং (শিক্ষার্থী)</label>
+                        <input type="tel">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>২. অভিভাবকের তথ্য</h4>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>পিতার কর্মস্থল / অভিভাবকের নাম</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নং (অভিভাবক)</label>
+                        <input type="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>অভিভাবকের পেশা</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>সম্পর্ক</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>বার্ষিক আয়</label>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>৩. ঠিকানা</h4>
+                <div class="form-grid-address">
+                    <fieldset>
+                        <legend>বর্তমান ঠিকানা</legend>
+                        <div class="address-fields">
+                            <div class="form-group"><label>গ্রাম</label><input type="text"></div>
+                            <div class="form-group"><label>ডাকঘর</label><input type="text"></div>
+                            <div class="form-group"><label>উপজেলা</label><input type="text"></div>
+                            <div class="form-group"><label>জেলা</label><input type="text"></div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>স্থায়ী ঠিকানা</legend>
+                        <div class="address-fields">
+                            <div class="form-group"><label>গ্রাম</label><input type="text"></div>
+                            <div class="form-group"><label>ডাকঘর</label><input type="text"></div>
+                            <div class="form-group"><label>উপজেলা</label><input type="text"></div>
+                            <div class="form-group"><label>জেলা</label><input type="text"></div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>৪. ব্যক্তিগত তথ্য</h4>
+                <div class="form-grid-personal">
+                    <div class="form-group">
+                        <label>জন্ম তারিখ (সনদ অনুযায়ী)</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group marital-status">
+                        <label>বৈবাহিক অবস্থা:</label>
+                        <input type="radio" id="married" name="marital_status"><label for="married">বিবাহিত</label>
+                        <input type="radio" id="unmarried" name="marital_status"><label for="unmarried">অবিবাহিত</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>৫. পরীক্ষার পাসের বিবরণ</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>পরীক্ষার নাম</th>
+                            <th>রোল নম্বর</th>
+                            <th>রেজিঃ নম্বর</th>
+                            <th>শিক্ষাবোর্ড</th>
+                            <th>প্রাপ্ত গ্রেড</th>
+                            <th>পাসের সাল</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>এসএসসি</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>জেএসসি</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-section">
+                <h4>৬. যে সকল বিষয় গ্রহণ করতে ইচ্ছুক</h4>
+                <p class="subject-choice">
+                    (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ প্রযুক্তি, (ঘ)................., (ঙ).................,
+                    (চ)................. ৪র্থ বিষয় .................।
+                </p>
+            </div>
+
+            <p class="final-declaration">
+                আমি এ মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ
+                শাস্তি ভোগ করতে বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকবো।
+            </p>
+
+        </section>
+
+        <footer>
+            <div class="signature-box">
+                <hr>
+                <p>অভিভাবকের স্বাক্ষর ও সীল</p>
+                <p>তারিখ: .............................</p>
+            </div>
+            <div class="signature-box">
+                <hr>
+                <p>আবেদনকারীর স্বাক্ষর</p>
+                <p>তারিখ: .............................</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Libraries for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Custom Script -->
+    <script>
+        // Wait until the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+            // Get the buttons
+            const printBtn = document.getElementById('print-btn');
+            const downloadBtn = document.getElementById('download-btn');
+
+            // --- Print Functionality ---
+            printBtn.addEventListener('click', () => {
+                window.print();
+            });
+
+            // --- PDF Download Functionality ---
+            downloadBtn.addEventListener('click', () => {
+                // Get the element to convert to PDF
+                const formToConvert = document.getElementById('form-container');
+
+                console.log("Starting PDF generation...");
+
+                // Options for html2canvas
+                const options = {
+                    scale: 3, // Increase scale for better resolution
+                    useCORS: true, // For images from other domains
+                    logging: true,
+                };
+
+                html2canvas(formToConvert, options).then(canvas => {
+                    console.log("Canvas created successfully.");
+
+                    // Get image data from the canvas
+                    const imgData = canvas.toDataURL('image/png');
+
+                    // Initialize jsPDF
+                    // window.jspdf.jsPDF is used to access the library from the global scope
+                    const { jsPDF } = window.jspdf;
+
+                    // A4 page dimensions in mm: 210 wide by 297 high
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+                    // Calculate the aspect ratio to fit the image on the A4 page
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    const canvasAspectRatio = canvasWidth / canvasHeight;
+                    const pdfAspectRatio = pdfWidth / pdfHeight;
+
+                    let finalWidth, finalHeight;
+
+                    if (canvasAspectRatio > pdfAspectRatio) {
+                        // Wider than page
+                        finalWidth = pdfWidth;
+                        finalHeight = pdfWidth / canvasAspectRatio;
+                    } else {
+                        // Taller than page
+                        finalHeight = pdfHeight;
+                        finalWidth = pdfHeight * canvasAspectRatio;
+                    }
+
+                    // Center the image on the page
+                    const x = (pdfWidth - finalWidth) / 2;
+                    const y = (pdfHeight - finalHeight) / 2;
+
+                    // Add the image to the PDF
+                    pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
+
+                    // Save the PDF
+                    pdf.save('Peoples-College-Admission-Form.pdf');
+                    console.log("PDF saved.");
+                }).catch(error => {
+                    console.error('Oops, something went wrong!', error);
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
