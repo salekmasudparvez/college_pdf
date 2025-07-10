@@ -3,552 +3,422 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পিপলস কলেজ - ভর্তি আবেদন ফর্ম</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ভর্তি আবেদন ফর্ম</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #006400;
-            /* Dark Green */
-            --border-color: #cccccc;
-            --text-color: #333333;
-            --bg-color: #f4f4f4;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
+   <style>
+    * {
+    font-family: 'Kalpurush', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Noto Sans Bengali', sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 20px;
-            color: var(--text-color);
-            -webkit-print-color-adjust: exact;
-            /* Important for printing background colors */
-            print-color-adjust: exact;
-        }
+:root {
+    --font-size-one: 30px;
+    --font-size-two: 16px;
+    --font-size-three: 12px;
+    --border-color: #333;
+}
 
-        #form-container {
-            background-color: white;
-            width: 210mm;
-            /* A4 width */
-            min-height: 297mm;
-            /* A4 height */
-            margin: 20px auto;
-            padding: 15mm;
-            /* Standard margin */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
-            /* Include padding in width/height */
-        }
+body {
+    background: #f0f2f5;
+    color: #000;
+}
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
+.admission-pdf-form-container {
+    width: 210mm; /* A4 Width */
+    min-height: 297mm; /* A4 Height */
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
 
-        .logo {
-            width: 90px;
-            height: 90px;
-        }
+/* --- Header --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+.logo { width: 90px; height: auto; }
+.photo { width: 120px; height: 140px; border: 1px solid #ddd; padding: 2px; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.header-text { text-align: center; }
+.header-text h1 { font-size: var(--font-size-one); font-weight: 700; color: #003366; }
+.header-text h3 { font-size: var(--font-size-two); font-weight: 500; margin: 5px 0; }
+.header-text p { font-size: var(--font-size-three); font-weight: lighter; color: #888; }
+.badge_admission { background-color: #004a99; color: white; padding: 5px 15px; border-radius: 5px; display: inline-block; }
 
-        .title-container {
-            text-align: center;
-        }
+/* --- Section One (Mobile/Roll) --- */
+/* REFACTORED: Replaced complex grid with simple Flexbox for perfect alignment. */
+.form-section-one {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+.mobile-group {
+    flex-grow: 1;
+    display: flex;
+    border-right: 1px solid var(--border-color);
+}
+.mobile-group .label {
+    padding: 15px 10px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    border-right: 1px solid var(--border-color);
+    font-weight: 500;
+}
+.mobile-group .input-field {
+    flex-grow: 1;
+    padding: 5px 10px;
+}
+.mobile-group .input-field:first-of-type { border-bottom: 1px solid var(--border-color); }
+.label-inline { font-size: var(--font-size-three); }
 
-        .title-container h1 {
-            color: var(--primary-color);
-            font-size: 28px;
-            margin: 0;
-        }
+.roll-group {
+    padding: 10px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.optional { font-size: 11px; font-style: italic; color: #666; margin-bottom: 8px; }
+.class-roll { font-size: var(--font-size-three); }
 
-        .title-container h2,
-        .title-container h3,
-        .title-container p {
-            margin: 5px 0 0;
-        }
+/* --- General Content --- */
+.start-paragraph { margin: 15px 0; font-size: var(--font-size-three); line-height: 1.6; }
 
-        .photo-container {
-            width: 120px;
-            height: 140px;
-            border: 2px dashed var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-        }
+/* --- Section Two (Name/Father/Mother etc.) --- */
+/* REFACTORED: Cleaned up grid into simple flex rows with borders on the container. */
+.form-section-two {
+    border: 1px solid var(--border-color);
+}
+.input-row {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+.input-row:last-child { border-bottom: none; }
+.row-title {
+    width: 250px;
+    padding: 8px 10px;
+    font-weight: 500;
+    border-right: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.row-value {
+    flex-grow: 1;
+    padding: 8px 10px;
+}
+.input-row.multi-field {
+    display: flex;
+    padding: 0;
+}
+.field-half {
+    width: 50%;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+.field-half:first-child { border-right: 1px solid var(--border-color); }
+.field-half .label { margin-right: 10px; font-weight: 500; }
+.field-half .value { flex-grow: 1; border-bottom: 1px dotted #888; }
 
-        /* Form Body */
-        .form-body p {
-            line-height: 1.8;
-        }
+/* --- Details Grid (Address, Profession, etc.) --- */
+/* REFACTORED: Replaced massive, brittle CSS grid with a simple, robust 2-column grid. */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-color);
+    border-top: none;
+}
+.grid-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-top: 1px solid var(--border-color);
+}
+/* Creating the grid borders */
+.grid-item:nth-child(odd) { border-right: 1px solid var(--border-color); }
+.grid-item.full-width { grid-column: span 2; border-right: none; }
 
-        .address-section {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+.grid-item .label { margin-right: 10px; font-weight: 500; white-space: nowrap; }
+.grid-item .value { flex-grow: 1; border-bottom: 1px dotted #888; height: 16px; }
+.sub-fields { display: flex; align-items: center; gap: 10px; }
+.sub-fields .value.small { width: 100px; }
+.address-item { flex-direction: column; align-items: flex-start; }
+.address-fields {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    margin-top: 8px;
+}
+.address-fields .field { display: flex; width: 100%; }
 
-        .form-section {
-            margin-bottom: 25px;
-        }
+.marital-status { justify-content: space-between; }
+.checkbox-group { display: flex; gap: 15px; }
+.checkbox-group label { margin-left: -10px; margin-right: 5px;}
 
-        .form-section h4 {
-            background-color: #f2f2f2;
-            padding: 8px;
-            border-left: 4px solid var(--primary-color);
-            font-size: 16px;
-            margin: 0 0 15px 0;
-        }
+/* --- Education Table --- */
+.table-heading { margin: 15px 0 5px; font-size: var(--font-size-two); font-weight: 500; }
+.education-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-three); }
+.education-table th, .education-table td { border: 1px solid var(--border-color); padding: 8px; text-align: center; }
+.education-table thead th { background-color: #f2f2f2; }
+.education-table td { height: 20px; }
 
-        .form-grid,
-        .form-grid-address,
-        .form-grid-personal {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+/* --- Declaration & Signatures --- */
+.declaration { margin-top: 15px; font-size: var(--font-size-three); line-height: 1.8; text-align: justify; }
+.signatures { display: flex; justify-content: space-between; margin-top: 60px; }
+.signature-box { text-align: center; font-size: var(--font-size-three); }
+.signature-box .line { margin-bottom: 5px; }
+.signature-box p { margin: 5px 0; }
 
-        .form-grid-address,
-        .form-grid-personal {
-            grid-template-columns: 1fr 1fr;
-        }
+/* --- Buttons & Print --- */
+.pdf-btn-container { text-align: center; margin: 30px; }
+.pdf-btn-container button {
+    padding: 10px 20px; font-size: 16px; cursor: pointer; border: 1px solid #ccc;
+    background-color: #007bff; color: white; border-radius: 5px; margin: 0 5px;
+}
+.pdf-btn-container button:hover { background-color: #0056b3; }
 
-        fieldset {
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        legend {
-            font-weight: 500;
-            padding: 0 10px;
-            color: var(--primary-color);
-        }
-
-        .address-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 5px;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="tel"] {
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: 'Noto Sans Bengali', sans-serif;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(0, 100, 0, 0.2);
-        }
-
-        .marital-status {
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .marital-status label {
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-
-        .marital-status input[type="radio"] {
-            margin-right: -5px;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        th,
-        td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: left;
-        }
-
-        thead {
-            background-color: #e9e9e9;
-        }
-
-        th {
-            font-weight: 600;
-        }
-
-        td {
-            height: 25px;
-            /* Provides space for handwriting */
-        }
-
-
-        /* Footer */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding-top: 30px;
-        }
-
-        .signature-box {
-            width: 40%;
-            text-align: center;
-        }
-
-        .signature-box hr {
-            border: 0;
-            border-top: 1px solid var(--text-color);
-        }
-
-        /* Page Controls (Buttons) */
-        .page-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .page-controls button {
-            padding: 12px 25px;
-            font-size: 16px;
-            font-family: 'Noto Sans Bengali', sans-serif;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--primary-color);
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        .page-controls button:hover {
-            background-color: #004d00;
-        }
-
-
-        /* Print-specific Styles */
-        @media print {
-            body {
-                background-color: white;
-                padding: 0;
-                margin: 0;
-            }
-
-            .page-controls {
-                display: none;
-            }
-
-            #form-container {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                box-shadow: none;
-                padding: 10mm;
-                /* Adjust for printer margins */
-            }
-        }
-    </style>
+@media print {
+    @page { size: A4; margin: 0; }
+    body { background: none; }
+    .admission-pdf-form-container { margin: 0; padding: 20mm; border: none; box-shadow: none; }
+    .pdf-btn-container { display: none; }
+}
+   </style>
 </head>
 
 <body>
-
-    <div class="page-controls">
-        <button id="print-btn">🖨️ Print Form</button>
-        <button id="download-btn">📄 Download as PDF</button>
-    </div>
-
-    <!-- This is the container that will be printed/converted to PDF -->
-    <div id="form-container">
-        <header>
-            <div class="logo-container">
-                <img src="https://i.imgur.com/L4u3v3n.png" alt="College Logo" class="logo">
+    <div class="admission-pdf-form-container" id="form-to-print">
+        <div class="header">
+            <img src="https://i.ibb.co/L5BwRzX/college-logo.png" class="logo" alt="Logo">
+            <div class="header-text">
+                <h1>পিপলস্ কলেজ, মথুরাপুর</h1>
+                <h3>স্থাপিতঃ ১৯৮৩ খ্রি:</h3>
+                <h3 class="badge_admission">ভর্তি আবেদন ফর্ম</h3>
+                <p>(আবেদনকারীর নিজ হাতে ফর্ম পূরণ করতে হবে)</p>
             </div>
-            <div class="title-container">
-                <h1>পিপলস কলেজ, মহিপুর</h1>
-                <h2>স্থাপিতঃ ১৯৭০ খ্রিঃ</h2>
-                <h3>ভর্তি আবেদন ফর্ম</h3>
-                <p>(আবেদনকারীর স্বহস্তে ফর্ম পূরণ করতে হবে)</p>
+            <div class="photo">
+                <img src="https://i.ibb.co/YhY6F3T/applicant-photo.png" alt="Applicant Photo">
             </div>
-            <div class="photo-container">
-                <span>শিক্ষার্থীর <br> ছবি</span>
+        </div>
+
+        <div class="form-section-one">
+            <div class="mobile-group">
+            <div class="label">মোবাইল নম্বর</div>
+            <div class="input-field">
+                <span class="label-inline">শিক্ষার্থীর মোবাইল নং:</span>
+                <span class="field-value"></span>
             </div>
-        </header>
-
-        <section class="form-body">
-            <div class="address-section">
-                বরাবর,<br>
-                অধ্যক্ষ,<br>
-                পিপলস কলেজ<br>
-                মহিপুর, দৌলতপুর, কুষ্টিয়া।
+            <div class="input-field">
+                <span class="label-inline">অভিভাবকের মোবাইল নং:</span>
+                <span class="field-value"></span>
             </div>
+            </div>
+            <div class="roll-group">
+            <div class="optional">(অফিস কর্তৃক পূরণীয়)</div>
+            <div class="class-roll">শ্রেণী রোল: .........................</div>
+            </div>
+        </div>
 
-            <p class="declaration">
-                জনাব,<br>
-                আমি আপনার কলেজে ২০২২ - ২০২৩ শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে
-                ইচ্ছুক। নিম্নে আমার বিবরণ প্রদান করিলামঃ
-            </p>
+        <p class="start-paragraph">
+            জনাব,<br>
+            আমি আপনার কলেজে ২০২১... - ২০২২... শিক্ষাবর্ষে একাদশ/দ্বাদশ শ্রেণিতে মানবিক/বিজ্ঞান/ব্যবসায় শাখায় ভর্তি হতে ইচ্ছুক। নিচে আমার বিবরণ প্রদান করিলাম:
+        </p>
 
-            <div class="form-section">
-                <h4>১. আবেদনকারীর তথ্য</h4>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>শিক্ষার্থীর নাম (বাংলায়)</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>পিতার নাম (বাংলায়)</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>মাতার নাম (বাংলায়)</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>মোবাইল নং (শিক্ষার্থী)</label>
-                        <input type="tel">
-                    </div>
+        <div class="form-section-two">
+            <div class="input-row">
+                <span class="row-title">১. আবেদনকারীর নাম (বাংলায়):</span>
+                <span class="row-value"></span>
+            </div>
+            <div class="input-row">
+                <span class="row-title">২. পিতার নাম (বাংলায়):</span>
+                <span class="row-value"></span>
+            </div>
+            <div class="input-row">
+                <span class="row-title">৩. মাতার নাম (বাংলায়):</span>
+                <span class="row-value"></span>
+            </div>
+            <div class="input-row">
+                <span class="row-title">৪. পিতা / অভিভাবকের নাম:</span>
+                <span class="row-value"></span>
+            </div>
+            <div class="input-row multi-field">
+                <div class="field-half">
+                    <span class="label">অভিভাবকের সম্পর্ক:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="field-half">
+                    <span class="label">অভিভাবকের মোবাইল নং:</span>
+                    <span class="value"></span>
                 </div>
             </div>
+        </div>
 
-            <div class="form-section">
-                <h4>২. অভিভাবকের তথ্য</h4>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>পিতার কর্মস্থল / অভিভাবকের নাম</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>মোবাইল নং (অভিভাবক)</label>
-                        <input type="tel">
-                    </div>
-                    <div class="form-group">
-                        <label>অভিভাবকের পেশা</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>সম্পর্ক</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>বার্ষিক আয়</label>
-                        <input type="text">
-                    </div>
+        <div class="details-grid">
+            <div class="grid-item">
+                <span class="label">৫. অভিভাবকের পেশা:</span>
+                <span class="value"></span>
+            </div>
+            <div class="grid-item">
+                <span class="label">বার্ষিক আয়:</span>
+                <span class="value"></span>
+            </div>
+            <div class="grid-item full-width">
+                <span class="label">৬. অভিভাবকের জমির পরিমাণ:</span>
+                <div class="sub-fields">
+                    <span>কৃষি:</span><span class="value small"></span>
+                    <span>অকৃষি:</span><span class="value small"></span>
+                    <span>মোট:</span><span class="value small"></span>
                 </div>
             </div>
-
-            <div class="form-section">
-                <h4>৩. ঠিকানা</h4>
-                <div class="form-grid-address">
-                    <fieldset>
-                        <legend>বর্তমান ঠিকানা</legend>
-                        <div class="address-fields">
-                            <div class="form-group"><label>গ্রাম</label><input type="text"></div>
-                            <div class="form-group"><label>ডাকঘর</label><input type="text"></div>
-                            <div class="form-group"><label>উপজেলা</label><input type="text"></div>
-                            <div class="form-group"><label>জেলা</label><input type="text"></div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>স্থায়ী ঠিকানা</legend>
-                        <div class="address-fields">
-                            <div class="form-group"><label>গ্রাম</label><input type="text"></div>
-                            <div class="form-group"><label>ডাকঘর</label><input type="text"></div>
-                            <div class="form-group"><label>উপজেলা</label><input type="text"></div>
-                            <div class="form-group"><label>জেলা</label><input type="text"></div>
-                        </div>
-                    </fieldset>
+            <div class="grid-item full-width address-item">
+                <span class="label">৭. আবেদনকারীর বর্তমান ঠিকানা:</span>
+                <div class="address-fields">
+                    <div class="field"><span class="label">গ্রাম:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">ডাকঘর:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">উপজেলা:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">জেলা:</span><span class="value"></span></div>
                 </div>
             </div>
-
-            <div class="form-section">
-                <h4>৪. ব্যক্তিগত তথ্য</h4>
-                <div class="form-grid-personal">
-                    <div class="form-group">
-                        <label>জন্ম তারিখ (সনদ অনুযায়ী)</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group marital-status">
-                        <label>বৈবাহিক অবস্থা:</label>
-                        <input type="radio" id="married" name="marital_status"><label for="married">বিবাহিত</label>
-                        <input type="radio" id="unmarried" name="marital_status"><label for="unmarried">অবিবাহিত</label>
-                    </div>
+            <div class="grid-item full-width address-item">
+                <span class="label">৮. আবেদনকারীর স্থায়ী ঠিকানা:</span>
+                <div class="address-fields">
+                    <div class="field"><span class="label">গ্রাম:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">ডাকঘর:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">জেলা:</span><span class="value"></span></div>
+                    <div class="field"><span class="label">উপজেলা:</span><span class="value"></span></div>
                 </div>
             </div>
-
-            <div class="form-section">
-                <h4>৫. পরীক্ষার পাসের বিবরণ</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>পরীক্ষার নাম</th>
-                            <th>রোল নম্বর</th>
-                            <th>রেজিঃ নম্বর</th>
-                            <th>শিক্ষাবোর্ড</th>
-                            <th>প্রাপ্ত গ্রেড</th>
-                            <th>পাসের সাল</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>এসএসসি</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>জেএসসি</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="grid-item">
+                <span class="label">৯. জন্ম তারিখ (সনদ অনুযায়ী):</span>
+                <span class="value"></span>
             </div>
-
-            <div class="form-section">
-                <h4>৬. যে সকল বিষয় গ্রহণ করতে ইচ্ছুক</h4>
-                <p class="subject-choice">
-                    (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ প্রযুক্তি, (ঘ)................., (ঙ).................,
-                    (চ)................. ৪র্থ বিষয় .................।
-                </p>
+            <div class="grid-item marital-status">
+                <span class="label">বৈবাহিক অবস্থা:</span>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="married"><label for="married">বিবাহিত</label>
+                    <input type="checkbox" id="unmarried"><label for="unmarried">অবিবাহিত</label>
+                </div>
             </div>
+        </div>
 
-            <p class="final-declaration">
-                আমি এ মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ
-                শাস্তি ভোগ করতে বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকবো।
-            </p>
+        <div class="table-heading">
+            <span>১০. পরীক্ষার পাসের বিবরণ:</span>
+        </div>
 
-        </section>
+        <table class="education-table">
+            <thead>
+                <tr>
+                    <th>পরীক্ষার নাম</th>
+                    <th>রোল নম্বর</th>
+                    <th>রেজিঃ নম্বর</th>
+                    <th>শিক্ষাবর্ষ</th>
+                    <th>প্রাপ্ত গ্রেড</th>
+                    <th>পাসের সাল</th>
+                    <th>বোর্ডের নাম</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>এস.এস.সি</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td>জে.এস.সি</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <footer>
+        <p class="declaration">
+            ১১. যে সকল বিষয় গ্রহণ করতে ইচ্ছুক তা বাংলায় (ক).................(খ)..................(গ)................ তথ্য ও যোগাযোগ প্রযুক্তি,(ঘ)...................(ঙ)...................(চ)......................(ছ) ৪র্থ বিষয় ...............। আমি এ মর্মে অঙ্গীকার করছি যে, ওপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আবেদনপত্র বাতিল বলে গণ্য করতে বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকব।
+        </p>
+
+        <div class="signatures">
             <div class="signature-box">
-                <hr>
+                <p class="line">.......................................</p>
                 <p>অভিভাবকের স্বাক্ষর ও সীল</p>
                 <p>তারিখ: .............................</p>
             </div>
             <div class="signature-box">
-                <hr>
+                <p class="line">.......................................</p>
                 <p>আবেদনকারীর স্বাক্ষর</p>
                 <p>তারিখ: .............................</p>
             </div>
-        </footer>
-
+        </div>
     </div>
 
-    <!-- Libraries for PDF Generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <div class="pdf-btn-container">
+        <button onclick="printForm()">🖨️ প্রিন্ট করুন</button>
+        <button onclick="downloadPDF()">⬇️ পিডিএফ ডাউনলোড</button>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- Custom Script -->
-    <script>
-        // Wait until the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', (event) => {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script >
+        function printForm() {
+    window.print();
+}
 
-            // Get the buttons
-            const printBtn = document.getElementById('print-btn');
-            const downloadBtn = document.getElementById('download-btn');
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    // FIXED: Correctly selected the form container by its ID.
+    const element = document.getElementById('form-to-print'); 
 
-            // --- Print Functionality ---
-            printBtn.addEventListener('click', () => {
-                window.print();
-            });
+    if (!element) {
+        console.error("PDF generation failed: Element with ID 'form-to-print' not found.");
+        return;
+    }
 
-            // --- PDF Download Functionality ---
-            downloadBtn.addEventListener('click', () => {
-                // Get the element to convert to PDF
-                const formToConvert = document.getElementById('form-container');
+    // Use a higher scale for better resolution
+    const canvas = await html2canvas(element, {
+        scale: 3, 
+        useCORS: true,
+        logging: true,
+    });
 
-                console.log("Starting PDF generation...");
+    const imgData = canvas.toDataURL("image/png");
 
-                // Options for html2canvas
-                const options = {
-                    scale: 3, // Increase scale for better resolution
-                    useCORS: true, // For images from other domains
-                    logging: true,
-                };
+    const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+    });
 
-                html2canvas(formToConvert, options).then(canvas => {
-                    console.log("Canvas created successfully.");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    
+    // Calculate the aspect ratio to fit the image onto the PDF page
+    const ratio = canvasWidth / canvasHeight;
+    const imgWidth = pdfWidth;
+    const imgHeight = imgWidth / ratio;
+    
+    // Check if the content is taller than the page, and add new pages if needed
+    let heightLeft = imgHeight;
+    let position = 0;
 
-                    // Get image data from the canvas
-                    const imgData = canvas.toDataURL('image/png');
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pdfHeight;
 
-                    // Initialize jsPDF
-                    // window.jspdf.jsPDF is used to access the library from the global scope
-                    const { jsPDF } = window.jspdf;
+    while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pdfHeight;
+    }
 
-                    // A4 page dimensions in mm: 210 wide by 297 high
-                    const pdf = new jsPDF('p', 'mm', 'a4');
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = pdf.internal.pageSize.getHeight();
-
-                    // Calculate the aspect ratio to fit the image on the A4 page
-                    const canvasWidth = canvas.width;
-                    const canvasHeight = canvas.height;
-                    const canvasAspectRatio = canvasWidth / canvasHeight;
-                    const pdfAspectRatio = pdfWidth / pdfHeight;
-
-                    let finalWidth, finalHeight;
-
-                    if (canvasAspectRatio > pdfAspectRatio) {
-                        // Wider than page
-                        finalWidth = pdfWidth;
-                        finalHeight = pdfWidth / canvasAspectRatio;
-                    } else {
-                        // Taller than page
-                        finalHeight = pdfHeight;
-                        finalWidth = pdfHeight * canvasAspectRatio;
-                    }
-
-                    // Center the image on the page
-                    const x = (pdfWidth - finalWidth) / 2;
-                    const y = (pdfHeight - finalHeight) / 2;
-
-                    // Add the image to the PDF
-                    pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
-
-                    // Save the PDF
-                    pdf.save('Peoples-College-Admission-Form.pdf');
-                    console.log("PDF saved.");
-                }).catch(error => {
-                    console.error('Oops, something went wrong!', error);
-                });
-            });
-
-        });
+    pdf.save("ভর্তি_ফর্ম.pdf");
+}
     </script>
-
 </body>
-
 </html>

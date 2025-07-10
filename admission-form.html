@@ -12,6 +12,11 @@
             box-sizing: border-box;
 
         }
+        :root{
+            --font-size-one: 28px;
+            --font-size-two: 16px;
+            --font-size-three: 12px;
+        }
 
         .admission-pdf-form-container {
             width: 800px;
@@ -28,34 +33,45 @@
 
         .header-logo-part {
             display: flex;
-            align-items: start;
             align-items: center;
+            justify-content: space-between;
             gap: 0;
+            flex-grow: 1;
         }
 
         .header-text {
-            text-align: left;
+            text-align: center;
+            padding: 5px 5px;
         }
 
         .header-text h1 {
-            font-size: 30px;
+            font-size: var(--font-size-one);
             margin: 0;
         }
          .input-group{
-            font-size: 15px !important;
+            font-size: var(--font-size-three);
          }
         .header-text h3 {
-            font-size: 18px;
+            font-size: var(--font-size-two);
             font-weight: normal;
             margin: 0 !important;
         }
 
         .header-text p {
-            font-size: 16px;
+            font-size: var(--font-size-three);
             font-weight: lighter;
             color: #939393;
             margin: 0 !important;
         }
+        .badge_admission {
+            background-color: rgb(81, 81, 174);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+       
 
         .logo {
             width: 144px;
@@ -88,6 +104,7 @@
         .education-table {
             width: 100%;
             border-collapse: collapse;
+            font-size: var(--font-size-three);
        
         }
 
@@ -106,6 +123,8 @@
         .signatures {
             display: flex;
             justify-content: space-between;
+            margin-top: 10px;
+            font-size: var(--font-size-three);
             margin-top: 10px;
         }
 
@@ -155,7 +174,7 @@
 
         .form-section-one>.input-group:nth-child(3) .optional {
             color: gray;
-            font-size: 14px;
+            font-size: var(--font-size-three);
             font-weight: normal;
             font-style: italic;
         }
@@ -427,7 +446,7 @@
         }
         .start-paragraph{
             margin: 10px 0;
-            font-size: 16px;
+            font-size: var(--font-size-three);
         
         }
         @media print {
@@ -462,13 +481,14 @@
             <div class="header-logo-part">
                 <img src="./assets/logo.jpg" class="logo" alt="Logo">
                 <div class="header-text">
-                    <h1>পিপলস কলেজ, মহুরাপুর</h1>
+                    <h1>পিপলস্ কলেজ, মথুরাপুর</h1>
                     <h3>স্থাপিত ১৯৭০ খ্রি:</h3>
-                    <h3>ভর্তি আবেদন ফর্ম</h3>
+                    <h3 class="badge_admission">ভর্তি আবেদন ফর্ম</h3>
                     <p>(আবেদনকারীর হাত দিয়ে ফর্ম পূরণ করতে হবে)</p>
                 </div>
+                 <div class="photo"><img src="./assets/man.png" alt=""></div>
             </div>
-            <div class="photo"><img src="./assets/man.png" alt=""></div>
+           
         </div>
 
         <div class="form-section-one">
@@ -626,7 +646,7 @@
         </div>
 
 
-        <div style="margin: 10px;">
+        <div style="margin: 10px; font-size: var(--font-size-three);">
             <span>১০. পরীক্ষার পাসের বিবরণ:</span>
         </div>
 
@@ -651,23 +671,25 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td>জেএসসি</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+           
         </table>
 
 
 
-        <p style="margin-top: 10px;">
-            ১১. যে সকল বিষয় গ্রহন করতে ইচ্ছুক (ক) বাংলা, (খ) ইংরেজি, (গ) তথ্য ও যোগাযোগ
-            প্রযুক্তি,(ঘ)..............(ঙ)..............(চ)..............(ছ) ৪র্থ বিষয় ..............আমি এ মর্মে
-            অঙ্গীকার করছি যে, ওপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ শাস্তি ভোগ করতে
+        <table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: var(--font-size-three);">
+            <tr>
+            <td style="border: 1px solid black; width: 20%;">Main Subjects:</td>
+            <td style="border: 1px solid black; width: 30%;">Bangla, English, ICT</td>
+            <td style="border: 1px solid black; width: 20%;">4th Subjects:</td>
+            <td style="border: 1px solid black; width: 30%;">Higher Math</td>
+            </tr>
+            <tr>
+            <td style="border: 1px solid black;">Elective Subjects:</td>
+            <td style="border: 1px solid black;" colspan="3">Physics, Chemistry, Biology</td>
+            </tr>
+        </table>
+        <p style="margin-top: 10px; font-size: var(--font-size-three);">
+            আমি এ মর্মে অঙ্গীকার করছি যে, ওপরে বর্ণিত তথ্যাবলি সম্পূর্ণ সত্য। কোন তথ্য অসত্য প্রমাণিত হলে আইনানুগ শাস্তি ভোগ করতে
             বাধ্য থাকব এবং অত্র কলেজের যাবতীয় আইন কানুন মানিয়া চলিতে বাধ্য থাকবো।
         </p>
 
@@ -680,6 +702,9 @@
                 <p>আবেদনকারীর স্বাক্ষর</p>
                 <p>তারিখ: ......................</p>
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px; font-size: 14px; color: #555;">
+            Education Management System - Design &amp; Develop by JBD IT.
         </div>
     </div>
     <!-- Buttons -->

@@ -3,135 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dual Admit Card</title>
+  <title>Professional Admit Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f1f1f1;
-      margin: 0;
-      padding: 20px;
-      background-color: white;
+    :root {
+      --primary-color: #0D47A1; /* A deep, professional blue */
+      --secondary-color: #1565C0;
+      --text-color-dark: #212121;
+      --text-color-light: #616161;
+      --border-color: #dee2e6;
+      --background-light: #f8f9fa;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #e9ecef;
+      margin: 0;
+      padding: 30px;
+      color: var(--text-color-dark);
+    }
+    
     .btns {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
+    
     .btns button {
-      padding: 10px 20px;
+      font-family: 'Inter', sans-serif;
+      padding: 12px 24px;
       margin: 0 10px;
-      background-color: #0074d9;
+      background-color: var(--primary-color);
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
+    
+    .btns button:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
     #pdf_admitcard_content {
-      background: white;
-      width: 794px; /* A4 width in pixels at 96dpi */
+      background: transparent;
+      width: 210mm; /* A4 width */
+      min-height: 297mm; /* A4 height */
       margin: 0 auto;
-      padding: 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
+    
     .admit-card {
-      border: 1px solid #000;
-      padding: 20px;
+      background: white;
+      border: 1px solid var(--border-color);
+      padding: 0; /* Padding will be handled by inner elements */
       margin: 0 auto;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 10px;
+      overflow: hidden; /* Important for border-radius on children */
+      position: relative; /* For watermark */
     }
+
+    /* Faint background logo watermark */
+    .admit-card::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url('./assets/logo.jpg'); /* USE YOUR LOGO PATH */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 200px;
+        height: 200px;
+        opacity: 0.05;
+        z-index: 1;
+    }
+
+    .admit-card-content {
+        position: relative;
+        z-index: 2;
+        padding: 25px;
+    }
+
     .admitcard_pdf_header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #0074d9;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
-    }
-    .college-left {
-      display: flex;
-      align-items: center;
-    }
-    .college-left img {
-      width: 80px;
-      height: 80px;
-      margin-right: 15px;
-    }
-    .college-text {
-      text-align: left;
-    }
-    .college-text h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #0645ad;
-    }
-    .college-text small {
-      font-size: 12px;
-      display: block;
-    }
-    .admit-label {
-      background-color: red;
+      align-items: flex-start;
+      background-color: var(--primary-color);
       color: white;
-      font-weight: bold;
-      padding: 2px 12px;
-      border-radius: 10px;
+      padding: 20px 25px;
+    }
+    
+    .college-left img {
+      width: 70px;
+      height: 70px;
+      margin-right: 20px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+    
+    .college-text h2 {
+      margin: 0 0 5px 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    
+    .college-text p {
+      margin: 0;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    
+    .admit-label {
+      background-color: var(--secondary-color);
+      font-weight: 600;
+      padding: 5px 15px;
+      border-radius: 5px;
       display: inline-block;
-      margin-top: 6px;
+      margin-top: 10px;
+      font-size: 16px;
+      letter-spacing: 0.5px;
     }
+    
     .student-photo {
-      width: 100px;
-      height: 120px;
-      border: 1px solid #000;
+      width: 110px;
+      height: 130px;
       object-fit: cover;
+      border: 4px solid white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .divider_span{
-        margin: auto;
-        width: 100%;
-        text-align: center;
-        display: flex;
-        justify-content: center;
+    
+    /* Using CSS Grid for student info */
+    .student-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 12px 20px;
+        margin-top: 20px;
     }
-    .info-table, .subject-table {
+
+    .info-item {
+        font-size: 14px;
+    }
+
+    .info-item .label {
+        font-weight: 600;
+        color: var(--text-color-dark);
+        display: inline-block;
+        width: 120px; /* Aligns the values */
+    }
+
+    .info-item .value {
+        color: var(--text-color-light);
+    }
+
+    .subject-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 15px;
-    }
-    .info-table td {
-      padding: 5px;
+      margin-top: 25px;
       font-size: 14px;
     }
+    
     .subject-table th, .subject-table td {
-      border: 1px solid #000;
-      padding: 6px;
-      font-size: 13px;
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
       text-align: left;
     }
-    .subject-table th {
-      background-color: #e3f0fa;
+    
+    .subject-table thead th {
+      background-color: var(--background-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
     }
-    .note-one {
-      margin-top: 10px;
-      text-align: center;
-      font-weight: bold;
-      color: #b71c1c;
-      font-size: 14px;
+    
+    .instructions {
+        margin-top: 25px;
+        padding: 15px;
+        background-color: var(--background-light);
+        border-radius: 8px;
+        border-left: 4px solid var(--secondary-color);
     }
+    .instructions h4 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    .instructions ul {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 13px;
+        color: var(--text-color-light);
+    }
+
     .signatures {
       display: flex;
       justify-content: space-between;
-      margin-top: 30px;
+      margin-top: 50px; /* More space for signing */
       font-size: 14px;
+      text-align: center;
     }
+    .signature-box {
+        border-top: 1px solid var(--text-color-light);
+        padding-top: 8px;
+        width: 200px;
+        font-weight: 500;
+    }
+
     .admit-footer {
       text-align: center;
       font-size: 12px;
-      color: #555;
-      margin-top: 20px;
+      color: white;
+      background-color: var(--text-color-dark);
+      padding: 10px;
+      margin-top: 25px; /* Pushes it to the bottom */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
+
+    .cut-line {
+        text-align: center;
+        width: 100%;
+        border-bottom: 2px dashed #aaa;
+        line-height: 0.1em;
+        margin: 20px 0;
+    }
+    .cut-line span {
+        background: #e9ecef;
+        padding: 0 15px;
+        color: #aaa;
+        font-size: 24px;
+    }
+
     @media print {
-      
-      .btns {
+      body {
+        background-color: white;
+        padding: 0;
+      }
+      .btns, .cut-line {
         display: none;
       }
-      
+      #pdf_admitcard_content {
+        width: 100%;
+        min-height: 0;
+        display: block;
+      }
+      .admit-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        page-break-inside: avoid; /* Prevents card from splitting across pages */
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
@@ -145,94 +284,139 @@
     <!-- Admit Card 1 -->
     <div class="admit-card">
       <div class="admitcard_pdf_header">
-        <div class="college-left">
-          <img src="./assets/logo.png" alt="Logo" />
+        <div style="display: flex; align-items: center;">
+          <img class="student-photo" src="./assets/logo.jpg" alt="Logo" />
           <div class="college-text">
-            <h2>NAWABGANJ CITY COLLEGE, CHAPAINAWABGANJ</h2>
-            <small>Established: 1995 | EIIN NO: 124596 | Mobile: 01309-124596</small>
+            <h2>পিপলস্ কলেজ, মথুরাপুর</h2>
+            <p>Established: 1995 | EIIN NO: 124596 | Mobile: 01309-124596</p>
             <div class="admit-label">ADMIT CARD</div>
           </div>
         </div>
         <img class="student-photo" src="https://tse1.mm.bing.net/th/id/OIP.vftG2C6khk1eu-fR-15pIgHaLH" alt="Student Photo" />
       </div>
 
-      <table class="info-table">
-        <tr><td><strong>Exam Name</strong>: Class Test</td> <td><strong>Roll No.</strong>: 601</td></tr>
-        <tr><td><strong>Examinee Name</strong>: MD AL AMIN</td> <td><strong>Session</strong>: 2024-2025</td></tr>
-        <tr><td><strong>Father's Name</strong>: MD SAIFUL ISLAM</td> <td><strong>Group</strong>: Business</td></tr>
-        <tr><td><strong>Mother's Name</strong>: MST BASORI BEGUM</td> <td><strong>Soft ID</strong>: 268</td></tr>
-      </table>
+      <div class="admit-card-content">
+        <div class="student-info">
+          <div class="info-item"><span class="label">Exam Name:</span><span class="value">Class Test</span></div>
+          <div class="info-item"><span class="label">Roll No:</span><span class="value">601</span></div>
+          <div class="info-item"><span class="label">Examinee Name:</span><span class="value">MD AL AMIN</span></div>
+          <div class="info-item"><span class="label">Session:</span><span class="value">2024-2025</span></div>
+          <div class="info-item"><span class="label">Father's Name:</span><span class="value">MD SAIFUL ISLAM</span></div>
+          <div class="info-item"><span class="label">Group:</span><span class="value">Business</span></div>
+          <div class="info-item"><span class="label">Mother's Name:</span><span class="value">MST BASORI BEGUM</span></div>
+          <div class="info-item"><span class="label">Soft ID:</span><span class="value">268</span></div>
+        </div>
 
-      <table class="subject-table">
-        <tr><th>Code</th><th>Subject Name</th><th>Code</th><th>Subject Name</th></tr>
-        <tr><td>286</td><td>Business Organization & Management 1st Paper</td><td>287</td><td>Business Organization & Management 2nd Paper</td></tr>
-        <tr><td>277</td><td>Production Management & Marketing 1st Paper</td><td>278</td><td>Production Management & Marketing 2nd Paper</td></tr>
-        <tr><td>129</td><td>Statistics 1st Paper</td><td></td><td></td></tr>
-      </table>
+        <table class="subject-table">
+          <thead>
+            <tr><th>Code</th><th>Subject Name</th><th>Code</th><th>Subject Name</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>286</td><td>Business Organization & Management 1st Paper</td><td>287</td><td>Business Organization & Management 2nd Paper</td></tr>
+            <tr><td>277</td><td>Production Management & Marketing 1st Paper</td><td>278</td><td>Production Management & Marketing 2nd Paper</td></tr>
+            <tr><td>129</td><td>Statistics 1st Paper</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        
+        <div class="instructions">
+            <h4>Important Instructions</h4>
+            <ul>
+                <li><strong>Additional Subject:</strong> 129 (Statistics 1st Paper)</li>
+                <li>Mobile phones are strictly not allowed in the examination hall.</li>
+                <li>Bring this admit card to the examination hall every day.</li>
+            </ul>
+        </div>
 
-      <div class="note-one"><strong>Additional Subject:</strong> 129</div>
-      <div class="note-one">N.B Mobile phone is not allowed in the exam room.</div>
-
-      <div class="signatures">
-        <div>Signature of Accountant</div>
-        <div>Signature of Principal</div>
+        <div class="signatures">
+          <div class="signature-box">Signature of Accountant</div>
+          <div class="signature-box">Signature of Principal</div>
+        </div>
       </div>
-      <div class="admit-footer">This is software generated copy. Powered by Nawabganj City College. Design Developed by JBD IT</div>
+      <!-- Footer is removed from here to be placed outside the content wrapper for better positioning -->
     </div>
-     <span class="divider_span">--------------------------------------------------------</span>
-    <!-- Admit Card 2 (duplicate or another student) -->
+
+    <div class="cut-line"><span>✂️</span></div>
+
+    <!-- Admit Card 2 -->
     <div class="admit-card">
-      <div class="admitcard_pdf_header">
-        <div class="college-left">
-          <img src="./assets/logo.png" alt="Logo" />
-          <div class="college-text">
-            <h2>NAWABGANJ CITY COLLEGE, CHAPAINAWABGANJ</h2>
-            <small>Established: 1995 | EIIN NO: 124596 | Mobile: 01309-124596</small>
-            <div class="admit-label">ADMIT CARD</div>
+        <div class="admitcard_pdf_header">
+            <div style="display: flex; align-items: center;">
+              <img class="student-photo" src="./assets/logo.jpg" alt="Logo" />
+              <div class="college-text">
+                <h2>পিপলস্ কলেজ, মথুরাপুর</h2>
+                <p>Established: 1995 | EIIN NO: 124596 | Mobile: 01309-124596</p>
+                <div class="admit-label">ADMIT CARD</div>
+              </div>
+            </div>
+            <img class="student-photo" src="https://tse1.mm.bing.net/th/id/OIP.vftG2C6khk1eu-fR-15pIgHaLH" alt="Student Photo" />
           </div>
-        </div>
-        <img class="student-photo" src="https://tse1.mm.bing.net/th/id/OIP.vftG2C6khk1eu-fR-15pIgHaLH" alt="Student Photo" />
-      </div>
-
-      <table class="info-table">
-        <tr><td><strong>Exam Name</strong>: Class Test</td> <td><strong>Roll No.</strong>: 602</td></tr>
-        <tr><td><strong>Examinee Name</strong>: MD KARIM</td> <td><strong>Session</strong>: 2024-2025</td></tr>
-        <tr><td><strong>Father's Name</strong>: MD RAHIM</td> <td><strong>Group</strong>: Science</td></tr>
-        <tr><td><strong>Mother's Name</strong>: MST LAILA</td> <td><strong>Soft ID</strong>: 269</td></tr>
-      </table>
-
-      <table class="subject-table">
-        <tr><th>Code</th><th>Subject Name</th><th>Code</th><th>Subject Name</th></tr>
-        <tr><td>101</td><td>Physics 1st Paper</td><td>102</td><td>Physics 2nd Paper</td></tr>
-        <tr><td>133</td><td>Biology 1st Paper</td><td>134</td><td>Biology 2nd Paper</td></tr>
-        <tr><td>129</td><td>Statistics 1st Paper</td><td></td><td></td></tr>
-      </table>
-
-      <div class="note-one"><strong>Additional Subject:</strong> 129</div>
-      <div class="note-one">N.B Mobile phone is not allowed in the exam room.</div>
-
-      <div class="signatures">
-        <div>Signature of Accountant</div>
-        <div>Signature of Principal</div>
-      </div>
-      <div class="admit-footer">This is software generated copy. Powered by Nawabganj City College. Design Developed by JBD IT</div>
+    
+          <div class="admit-card-content">
+            <div class="student-info">
+              <div class="info-item"><span class="label">Exam Name:</span><span class="value">Class Test</span></div>
+              <div class="info-item"><span class="label">Roll No:</span><span class="value">602</span></div>
+              <div class="info-item"><span class="label">Examinee Name:</span><span class="value">MD KARIM</span></div>
+              <div class="info-item"><span class="label">Session:</span><span class="value">2024-2025</span></div>
+              <div class="info-item"><span class="label">Father's Name:</span><span class="value">MD RAHIM</span></div>
+              <div class="info-item"><span class="label">Group:</span><span class="value">Science</span></div>
+              <div class="info-item"><span class="label">Mother's Name:</span><span class="value">MST LAILA</span></div>
+              <div class="info-item"><span class="label">Soft ID:</span><span class="value">269</span></div>
+            </div>
+    
+            <table class="subject-table">
+              <thead>
+                <tr><th>Code</th><th>Subject Name</th><th>Code</th><th>Subject Name</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>101</td><td>Physics 1st Paper</td><td>102</td><td>Physics 2nd Paper</td></tr>
+                <tr><td>133</td><td>Biology 1st Paper</td><td>134</td><td>Biology 2nd Paper</td></tr>
+                <tr><td>129</td><td>Statistics 1st Paper</td><td></td><td></td></tr>
+              </tbody>
+            </table>
+            
+            <div class="instructions">
+                <h4>Important Instructions</h4>
+                <ul>
+                    <li><strong>Additional Subject:</strong> 129 (Statistics 1st Paper)</li>
+                    <li>Mobile phones are strictly not allowed in the examination hall.</li>
+                    <li>Bring this admit card to the examination hall every day.</li>
+                </ul>
+            </div>
+    
+            <div class="signatures">
+              <div class="signature-box">Signature of Accountant</div>
+              <div class="signature-box">Signature of Principal</div>
+            </div>
+          </div>
+          <!-- The footer will be generated automatically if needed for a design, but this layout is cleaner without it unless it's a static bar -->
     </div>
   </div>
 
   <script>
     async function handleDownload() {
       const { jsPDF } = window.jspdf;
-      const element = document.getElementById('pdf_admitcard_content');
-      const canvas = await html2canvas(element, { scale: 2 });
+      const content = document.getElementById('pdf_admitcard_content');
+      
+      // Temporarily remove cut line for PDF export
+      const cutLine = content.querySelector('.cut-line');
+      if (cutLine) cutLine.style.display = 'none';
+
+      const canvas = await html2canvas(content, { 
+        scale: 2, // Higher scale for better quality
+        useCORS: true, // For external images
+        backgroundColor: null // Use body background
+      });
+
+      // Restore cut line
+      if (cutLine) cutLine.style.display = 'block';
 
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('admit-cards.pdf');
+      pdf.save('professional-admit-cards.pdf');
     }
 
     function handlePrint() {
