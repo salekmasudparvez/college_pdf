@@ -396,14 +396,18 @@
             width: 18px;
             height: 18px;
             display: inline-block;
-            border: 2px solid #333;
+            border: 1px solid #333;
             border-radius: 4px;
-            background: linear-gradient(180deg, #fff 70%, #f0f0f0 100%);
+            background: rgb(255, 255, 255);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             margin-left: 6px;
             transition: border-color 0.2s;
             margin: 0;
             padding: 0;
+        }
+        .check_box_active {
+            border-color: #000000;
+            background-color: #007bff !important;
         }
 
         .grid_column_span_3 {
@@ -638,19 +642,13 @@
                 <span></span>
             </div>
             <div class="input-group grid_column_span_3">
-                <span class="text_nowrap">বৈবাহিক অবস্থা :বিবাহিত <div class="check_box"></div> অবিবাহিত <div
+                <span class="text_nowrap">বৈবাহিক অবস্থা :বিবাহিত <div class="check_box "></div> অবিবাহিত <div
                         class="check_box">
                     </div> </span>
             </div>
 
         </div>
-
-
-        <div style="margin: 10px; font-size: var(--font-size-three);">
-            <span>১০. পরীক্ষার পাসের বিবরণ:</span>
-        </div>
-
-        <table class="education-table">
+        <table class="education-table" style="margin-top: 10px; font-size: var(--font-size-three);">
             <tr>
                 <th>পরীক্ষার নাম</th>
                 <th>রোল নম্বর</th>
